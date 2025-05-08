@@ -1,10 +1,10 @@
 # Spooky Coincidence Memory Game
 
-Un juego de memoria con temática ocultista y esotérica, desarrollado con React y Next.js.
+Un juego de memoria desarrollado con React y Next.js.
 
 ## 🔮 Descripción
 
-**Spooky Coincidence** es un juego de memoria (Memory Game) donde el objetivo es encontrar pares de cartas coincidentes. El juego cuenta con una temática de tarot/ocultismo y ofrece distintos niveles de dificultad.
+**Spooky Coincidence** es un juego de memoria donde el objetivo es encontrar pares de cartas coincidentes. El juego cuenta con una temática de tarot y ofrece distintos niveles de dificultad.
 
 ## ✨ Características
 
@@ -12,8 +12,8 @@ Un juego de memoria con temática ocultista y esotérica, desarrollado con React
 - Diferentes niveles de dificultad (4x4, 6x6, 8x8)
 - Sistema de puntuación basado en intentos y tiempo
 - Temporizador para añadir desafío
-- Diseño responsivo para todos los dispositivos
-- Temática esotérica con cartas de tarot y símbolos ocultistas
+- Diseño responsive para todos los dispositivos
+- Temática esotérica con cartas de tarot 
 - Efectos visuales y animaciones
 
 ## 🛠️ Tecnologías utilizadas
@@ -90,8 +90,3 @@ Si deseas personalizar las imágenes de las cartas:
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
-## 🙏 Agradecimientos
-
-- Imágenes inspiradas en cartas de tarot tradicionales
-- Iconos proporcionados por [Lucide](https://lucide.dev/)
