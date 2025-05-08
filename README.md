@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Spooky Coincidence Memory Game
 
-## Getting Started
+Un juego de memoria con temática ocultista y esotérica, desarrollado con React y Next.js.
 
-First, run the development server:
+## 🔮 Descripción
 
+**Spooky Coincidence** es un juego de memoria (Memory Game) donde el objetivo es encontrar pares de cartas coincidentes. El juego cuenta con una temática de tarot/ocultismo y ofrece distintos niveles de dificultad.
+
+## ✨ Características
+
+- Tablero con cartas boca abajo que se voltean al hacer clic
+- Diferentes niveles de dificultad (4x4, 6x6, 8x8)
+- Sistema de puntuación basado en intentos y tiempo
+- Temporizador para añadir desafío
+- Diseño responsivo para todos los dispositivos
+- Temática esotérica con cartas de tarot y símbolos ocultistas
+- Efectos visuales y animaciones
+
+## 🛠️ Tecnologías utilizadas
+
+- [React](https://reactjs.org/) - Biblioteca para interfaces de usuario
+- [Next.js](https://nextjs.org/) - Framework de React
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitario
+- [Lucide React](https://lucide.dev/) - Iconos SVG
+
+## 🚀 Instalación y ejecución
+
+1. Clona este repositorio:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/tuusuario/spooky-coincidence-game.git
+cd spooky-coincidence-game
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instala las dependencias:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. Ejecuta el proyecto en modo desarrollo:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el juego.
 
-## Learn More
+## 📁 Estructura del proyecto
 
-To learn more about Next.js, take a look at the following resources:
+```
+memory-game/
+├── public/
+│   └── assets/
+│       ├── cards/ (imágenes de cartas)
+│       └── sounds/ (efectos de sonido)
+├── src/
+│   ├── app/
+│   │   ├── page.js (página principal)
+│   │   ├── layout.js (layout general)
+│   │   └── globals.css
+│   ├── components/
+│   │   ├── Board.jsx (tablero de juego)
+│   │   ├── Card.jsx (componente de carta)
+│   │   ├── GameControls.jsx (controles: reiniciar, dificultad)
+│   │   ├── ScoreBoard.jsx (puntuación y tiempo)
+│   │   └── GameOver.jsx (pantalla de fin de juego)
+│   ├── hooks/
+│   │   └── useGame.js (lógica central del juego)
+│   ├── utils/
+│   │   └── gameUtils.js (funciones auxiliares)
+│   └── constants/
+│       └── gameConstants.js (constantes del juego)
+├── package.json
+└── tailwind.config.js
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎮 Cómo jugar
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Selecciona un nivel de dificultad (Fácil, Medio o Difícil)
+2. Haz clic en "Comenzar" para iniciar el juego
+3. Haz clic en las cartas para voltearlas y encontrar pares coincidentes
+4. Intenta encontrar todos los pares antes de que se agote el tiempo
+5. Al finalizar, verás tu puntuación basada en los intentos realizados y el tiempo restante
 
-## Deploy on Vercel
+## 🖼️ Personalización
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Si deseas personalizar las imágenes de las cartas:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Reemplaza los archivos SVG en la carpeta `/public/assets/cards/`
+2. Actualiza las referencias en el archivo `/src/constants/gameConstants.js`
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+## 🙏 Agradecimientos
+
+- Imágenes inspiradas en cartas de tarot tradicionales
+- Iconos proporcionados por [Lucide](https://lucide.dev/)

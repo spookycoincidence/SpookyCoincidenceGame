@@ -1,103 +1,119 @@
-import Image from "next/image";
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { MoonStar, Skull } from 'lucide-react';
+import Board from '@/components/Board';
+import GameControls from '@/components/GameControls';
+import ScoreBoard from '@/components/ScoreBoard';
+import GameOver from '@/components/GameOver';
+import useGame from '@/hooks/useGame';
 
 export default function Home() {
+  const [initialLoad, setInitialLoad] = useState(true);
+  
+  // Obtener estado y funciones del juego desde el hook personalizado
+  const { 
+    cards, 
+    difficulty, 
+    timeLeft,
+    attempts, 
+    matchedPairs, 
+    score,
+    isGameOver,
+    gameWon,
+    gameStarted,
+    startGame, 
+    handleCardClick, 
+    setDifficulty 
+  } = useGame('EASY');
+  
+  // Calcular el número total de pares
+  const totalPairs = cards.length > 0 ? cards.length / 2 : 0;
+  
+  // Manejar cambio de dificultad
+  const handleChangeDifficulty = (newDifficulty) => {
+    setDifficulty(newDifficulty);
+  };
+  
+  // Efecto para quitar la animación inicial después de cargar
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInitialLoad(false);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-screen py-8 px-4">
+      {/* Cabecera */}
+      <header className={`text-center mb-8 ${initialLoad ? 'animate-fade-in' : ''}`}>
+        <div className="flex items-center justify-center gap-3 mb-2">
+          <MoonStar size={32} className="text-purple-400" />
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-indigo-300 text-transparent bg-clip-text">
+            Spooky Coincidence
+          </h1>
+          <Skull size={32} className="text-purple-400" />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <p className="text-purple-300 max-w-xl mx-auto">
+          Encuentra los pares de cartas coincidentes y desafía tu memoria en este místico juego de tarot.
+        </p>
+      </header>
+      
+      {/* Controles del juego */}
+      <GameControls 
+        difficulty={difficulty}
+        onChangeDifficulty={handleChangeDifficulty}
+        onStartGame={() => startGame(difficulty)}
+        gameStarted={gameStarted}
+      />
+      
+      {/* Marcador */}
+      <ScoreBoard 
+        timeLeft={timeLeft}
+        attempts={attempts}
+        matchedPairs={matchedPairs}
+        totalPairs={totalPairs}
+        gameStarted={gameStarted}
+      />
+      
+      {/* Tablero de juego */}
+      <Board 
+        cards={cards}
+        onCardClick={handleCardClick}
+        difficulty={difficulty}
+      />
+      
+      {/* Mensaje de inicio */}
+      {!gameStarted && !isGameOver && (
+        <div className="text-center mt-12 px-4">
+          <div className="inline-block bg-indigo-900/60 p-5 rounded-xl border border-purple-500/30 shadow-lg max-w-xl">
+            <h2 className="text-xl font-semibold text-purple-200 mb-3">¡Bienvenido al reino de lo oculto!</h2>
+            <p className="text-purple-300">
+              Selecciona la dificultad deseada y presiona "Comenzar" para iniciar tu viaje a través de las cartas místicas.
+              Encuentra todas las parejas antes de que se agote el tiempo para demostrar tu destreza mental.
+            </p>
+          </div>
+        </div>
+      )}
+      
+      {/* Pantalla de fin de juego */}
+      {isGameOver && (
+        <GameOver
+          gameWon={gameWon}
+          score={score}
+          matchedPairs={matchedPairs}
+          totalPairs={totalPairs}
+          attempts={attempts}
+          timeLeft={timeLeft}
+          onRestart={() => startGame(difficulty)}
+        />
+      )}
+      
+      {/* Pie de página */}
+      <footer className="mt-16 text-center text-purple-500/70 text-sm">
+        <p>Spooky Coincidence Memory Game © {new Date().getFullYear()}</p>
       </footer>
-    </div>
+    </main>
   );
 }

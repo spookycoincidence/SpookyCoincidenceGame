@@ -1,0 +1,19 @@
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo de la carta -->
+  <rect width="200" height="300" rx="10" fill="#1e1b4b" />
+  
+  <!-- Borde decorativo -->
+  <rect x="10" y="10" width="180" height="280" rx="8" fill="none" stroke="#a855f7" stroke-width="2" />
+  
+  <!-- Luna -->
+  <circle cx="100" cy="100" r="40" fill="#2e1065" />
+  <circle cx="120" cy="90" r="38" fill="#1e1b4b" />
+  
+  <!-- Estrellas -->
+  <path d="M60,160 L65,170 L55,170 Z" fill="#a855f7" />
+  <path d="M140,160 L145,170 L135,170 Z" fill="#a855f7" />
+  <path d="M100,200 L105,210 L95,210 Z" fill="#a855f7" />
+  
+  <!-- Texto de la carta -->
+  <text x="100" y="260" text-anchor="middle" fill="#d8b4fe" font-family="serif" font-size="18">LA LUNA</text>
+</svg>
